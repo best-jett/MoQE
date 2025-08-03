@@ -54,18 +54,16 @@ pip install torch==2.7.1 transformers==4.53.3 \
             bitsandbytes==0.47.0.dev0 pandas==2.3.1 \
             tqdm==4.67.1 accelerate==1.9.0
 ```
-## See requirements.txt for the full list.
+## Dependent library version See requirements.txt for the full list.
 
 
 ## 🛠️ Usage
-```bash
-1️⃣ Prepare Data & Models
+### 1️⃣ Prepare Data & Models
 Put .parquet datasets in the specified directory.
 Prepare your quantized experts and note their paths.
 We use WikiText-2, OpenWebText, and C4 for experiments.
-```
 
-2️⃣ Launch Training
+### 2️⃣ Launch Training
 🔹 Basic Training
 python train_model.py \
     --train \
@@ -77,7 +75,6 @@ python train_model.py \
     --learning_rate 5e-5 \
     --epochs 10
 🔹 Resume from Checkpoint
-
 
 
 python train_model.py \
