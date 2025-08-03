@@ -36,45 +36,18 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 ---
 
 ## 📦 Quick Setup
+
+```bash
 pip install torch==2.7.1 transformers==4.53.3 \
             bitsandbytes==0.47.0.dev0 pandas==2.3.1 \
             tqdm==4.67.1 accelerate==1.9.0
 See requirements.txt for the full list.
 🛠️ Usage
 1️⃣ Prepare Data & Models
-Put .parquet datasets in the specified directory.
-Prepare your quantized experts and note their paths.
-We use WikiText-2, OpenWebText, and C4 for experiments.
-2️⃣ Launch Training
-🔹 Basic Training
-python train_model.py \
-    --train \
-    --expert_paths /path/to/expert1 /path/to/expert2 \
-    --data_dir /path/to/data \
-    --save_dir /path/to/save/checkpoints \
-    --batch_size 8 \
-    --gradient_accumulation_steps 6 \
-    --learning_rate 5e-5 \
-    --epochs 10
-🔹 Resume from Checkpoint
+Place your .parquet datasets into the designated directory.
+Prepare your quantized experts and note their absolute or relative paths.
+Our experiments use WikiText-2, OpenWebText, and C4.
 
-python train_model.py \
-    --train \
-    --checkpoint_path /path/to/save/checkpoints/checkpoint.pt \
-    --expert_paths /path/to/expert1 /path/to/expert2 \
-    --data_dir /path/to/data \
-    --save_dir /path/to/save/checkpoints
-⚙️ Argument Reference
-Argument	Default	Description
---train	False	Enable training mode.
---eval	False	Enable evaluation mode.
---expert_paths	None	Space-separated list of expert model paths.
---data_dir	/path/to/data	Directory containing .parquet datasets.
---save_dir	/path/to/moe_output	Directory to save checkpoints & outputs.
---from_scratch	False	Train from scratch, ignoring existing checkpoints.
---checkpoint_path	None	Path to checkpoint for resuming/evaluation.
-📜 License
-This project is released under the MIT License.
 
 
 # MOEQ
