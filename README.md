@@ -61,12 +61,17 @@ python train_model.py \
     --epochs 10
 🔹 Resume from Checkpoint
 
+
+
 python train_model.py \
     --train \
     --checkpoint_path /path/to/save/checkpoints/checkpoint.pt \
     --expert_paths /path/to/expert1 /path/to/expert2 \
     --data_dir /path/to/data \
     --save_dir /path/to/save/checkpoints
+
+
+
 ⚙️ Argument Reference
 Argument	Default	Description
 --train	False	Enable training mode.
