@@ -11,7 +11,7 @@
 
 ## 📌 About
 This repository provides an **efficient framework** for training **Mixture-of-Quantization-Experts (MoQE)** models that are built from **pre-trained, frozen, quantization experts**.  
-The key idea is simple: keep all expert parameters frozen and only train a **lightweight gating network** that dynamically routes and combines the knowledge of these quantized experts on-the-fly.
+The key idea is simple: keep all expert parameters frozen and only train a **lightweight gating network** that dynamically routes and combines the knowledge of these quantized experts .
 
 | Advantages |
 | --- |
