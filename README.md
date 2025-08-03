@@ -59,12 +59,13 @@ pip install torch==2.7.1 transformers==4.53.3 \
 
 ## 🛠️ Usage
 ### 1️⃣ Prepare Data & Models
-Put .parquet datasets in the specified directory.
-Prepare your quantized experts and note their paths.
-We use WikiText-2, OpenWebText, and C4 for experiments.
+-Put .parquet datasets in the specified directory.
+-Prepare your quantized experts and note their paths.
+-We use WikiText-2, OpenWebText, and C4 for experiments.
 
 ### 2️⃣ Launch Training
-🔹 Basic Training
+- Basic Training
+```bash
 python train_model.py \
     --train \
     --expert_paths /path/to/expert1 /path/to/expert2 \
@@ -74,16 +75,16 @@ python train_model.py \
     --gradient_accumulation_steps 6 \
     --learning_rate 5e-5 \
     --epochs 10
-🔹 Resume from Checkpoint
-
-
+-Resume from Checkpoint
+```
+```bash
 python train_model.py \
     --train \
     --checkpoint_path /path/to/save/checkpoints/checkpoint.pt \
     --expert_paths /path/to/expert1 /path/to/expert2 \
     --data_dir /path/to/data \
     --save_dir /path/to/save/checkpoints
-
+```
 ⚙️ Argument Reference
 | Argument            | Default         | Description                     |
 | ------------------- | --------------- | ------------------------------- |
