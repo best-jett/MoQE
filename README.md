@@ -1,59 +1,87 @@
-MOEQ
-MoQE Training Code
-MoQE: Improve Quantization Model Performance via Mixture of Quantization Experts.
-This repository provides an efficient framework for training Mixture-of-Experts (MoE) models composed of pre-trained, frozen, quantized experts.
-The key idea is to keep all expert parameters frozen and only train a lightweight gating network that learns to dynamically route and combine the knowledge of these quantized experts on-the-fly.
-This approach dramatically reduces training compute, accelerates inference, and outperforms single quantized models on downstream tasks.
-NLP experiments were conducted on A100 80 GB, and CV experiments on V100S.
-Core Features
-Shallow-Sharing: All experts share one unified embedding layer; the bodies of the experts remain frozen, cutting trainable parameters to a minimum.
-Heterogeneous Experts: Native support for GGUF, Safetensors, and other formats—freely combine open-source experts.
-Dynamic Gating (MoERouter): A TransformerEncoder + self-attention router captures deep context to make precise routing decisions.
-Memory-Efficient Training:
-Gradient Checkpointing
-8-bit AdamW (bitsandbytes)
-Smart GPU Allocation: Automatically profiles each expert’s VRAM footprint; large experts are placed in model-parallel mode, small experts on the least-busy device.
-Curriculum Learning: Start training on a smaller dataset, then switch to a larger corpus for more stable and efficient convergence.
-Requirements
-Install the core dependencies:
+# MOEQ  
+**MoQE: Improve Quantization Model Performance via Mixture of Quantization Experts**
 
-pip install torch==2.7.1 transformers==4.53.3 bitsandbytes==0.47.0.dev0 pandas==2.3.1 tqdm==4.67.1 accelerate==1.9.0
+<p align="center">
+  <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8+-blue.svg"/>
+  <img alt="PyTorch 2.7+" src="https://img.shields.io/badge/PyTorch-2.7+-orange.svg"/>
+  <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green.svg"/>
+</p>
+
+---
+
+## 📌 About
+This repository provides an **efficient framework** for training **Mixture-of-Experts (MoE)** models that are built from **pre-trained, frozen, quantized experts**.  
+The key idea is simple: keep all expert parameters frozen and only train a **lightweight gating network** that dynamically routes and combines the knowledge of these quantized experts on-the-fly.
+
+| Advantages |
+| --- |
+| ✅ **Dramatically reduces training compute** |
+| ✅ **Accelerates inference** |
+| ✅ **Outperforms single quantized models** |
+
+> NLP experiments were run on **A100 80 GB**; CV experiments on **V100S**.
+
+---
+
+## 🚀 Core Features
+
+| Feature | Description |
+| --- | --- |
+| **Shallow-Sharing** | Unified embedding layer shared across all experts; expert bodies remain frozen → minimal trainable params. |
+| **Heterogeneous Experts** | Native support for **GGUF**, **Safetensors**, and more—mix-and-match open-source experts freely. |
+| **Dynamic Gating (MoERouter)** | TransformerEncoder + self-attention router for **context-aware** routing decisions. |
+| **Memory-Efficient Training** | • Gradient Checkpointing<br>• 8-bit AdamW (`bitsandbytes`) |
+| **Smart GPU Allocation** | Auto VRAM profiling → large experts go model-parallel, small ones land on the least-busy device. |
+| **Curriculum Learning** | Start on a **smaller** dataset, then switch to a **larger** corpus for stable & efficient convergence. |
+
+---
+
+## 📦 Quick Setup
+```bash
+pip install torch==2.7.1 transformers==4.53.3 \
+            bitsandbytes==0.47.0.dev0 pandas==2.3.1 \
+            tqdm==4.67.1 accelerate==1.9.0
 See requirements.txt for the full list.
-Quick Start
-1. Prepare Data & Models
-Place .parquet datasets in the specified directory.
+🛠️ Usage
+1️⃣ Prepare Data & Models
+Put .parquet datasets in the specified directory.
 Prepare your quantized experts and note their paths.
-We use WikiText-2, OpenWebText, and C4 in our experiments.
-2. Launch Training
-Basic training:
+We use WikiText-2, OpenWebText, and C4 for experiments.
+2️⃣ Launch Training
+🔹 Basic Training
+bash
+复制
 python train_model.py \
     --train \
     --expert_paths /path/to/expert1 /path/to/expert2 \
-    --data_dir /path/to/your/data \
+    --data_dir /path/to/data \
     --save_dir /path/to/save/checkpoints \
     --batch_size 8 \
     --gradient_accumulation_steps 6 \
     --learning_rate 5e-5 \
     --epochs 10
-Resume from checkpoint:
-
+🔹 Resume from Checkpoint
+bash
+复制
 python train_model.py \
     --train \
     --checkpoint_path /path/to/save/checkpoints/checkpoint.pt \
     --expert_paths /path/to/expert1 /path/to/expert2 \
-    --data_dir /path/to/your/data \
+    --data_dir /path/to/data \
     --save_dir /path/to/save/checkpoints
-Full Argument Reference
-
+⚙️ Argument Reference
+表格
+复制
 Argument	Default	Description
-Core		
 --train	False	Enable training mode.
 --eval	False	Enable evaluation mode.
 --expert_paths	None	Space-separated list of expert model paths.
 --data_dir	/path/to/data	Directory containing .parquet datasets.
---save_dir	/path/to/moe_output	Directory to save checkpoints and outputs.
+--save_dir	/path/to/moe_output	Directory to save checkpoints & outputs.
 --from_scratch	False	Train from scratch, ignoring existing checkpoints.
---checkpoint_path	None	Path to a checkpoint for resuming or evaluation.
+--checkpoint_path	None	Path to checkpoint for resuming/evaluation.
+📜 License
+This project is released under the MIT License.
 
 # MOEQ
 MoQE Training Code
