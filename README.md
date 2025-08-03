@@ -35,27 +35,10 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 
 ---
 
-## 📦 Quick Setup
-pip install torch==2.7.1 transformers==4.53.3 \
-            bitsandbytes==0.47.0.dev0 pandas==2.3.1 \
-            tqdm==4.67.1 accelerate==1.9.0
-See requirements.txt for the full list.
-🛠️ Usage
-1️⃣ Prepare Data & Models
-Place your .parquet datasets into the designated directory.
-Prepare your quantized experts and note their absolute or relative paths.
-Our experiments use WikiText-2, OpenWebText, and C4.
-2️⃣ Launch Training
-🔹 Basic Training
-python train_model.py \
-    --train \
-    --expert_paths /path/to/expert1 /path/to/expert2 \
-    --data_dir /path/to/data \
-    --save_dir /path/to/save/checkpoints \
-    --batch_size 8 \
-    --gradient_accumulation_steps 6 \
-    --learning_rate 5e-5 \
-    --epochs 10
+# 🚀 Quick Setup
+
+```bash
+pip install -r requirements.txt
 
 # MOEQ
 MoQE Training Code
