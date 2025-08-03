@@ -10,7 +10,7 @@
 ---
 
 ## 📌 About
-This repository provides an **efficient framework** for training **Mixture-of-Experts (MoE)** models that are built from **pre-trained, frozen, quantized experts**.  
+This repository provides an **efficient framework** for training **Mixture-of-Quantization-Experts (MoQE)** models that are built from **pre-trained, frozen, quantization experts**.  
 The key idea is simple: keep all expert parameters frozen and only train a **lightweight gating network** that dynamically routes and combines the knowledge of these quantized experts on-the-fly.
 
 | Advantages |
@@ -21,7 +21,6 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 
 > NLP experiments were run on **A100 80 GB**; CV experiments on **V100S**.
 
----
 
 ## 🚀 Core Features
 
@@ -49,8 +48,6 @@ Prepare your quantized experts and note their paths.
 We use WikiText-2, OpenWebText, and C4 for experiments.
 2️⃣ Launch Training
 🔹 Basic Training
-bash
-复制
 python train_model.py \
     --train \
     --expert_paths /path/to/expert1 /path/to/expert2 \
@@ -61,8 +58,7 @@ python train_model.py \
     --learning_rate 5e-5 \
     --epochs 10
 🔹 Resume from Checkpoint
-bash
-复制
+
 python train_model.py \
     --train \
     --checkpoint_path /path/to/save/checkpoints/checkpoint.pt \
@@ -70,8 +66,6 @@ python train_model.py \
     --data_dir /path/to/data \
     --save_dir /path/to/save/checkpoints
 ⚙️ Argument Reference
-表格
-复制
 Argument	Default	Description
 --train	False	Enable training mode.
 --eval	False	Enable evaluation mode.
@@ -82,6 +76,7 @@ Argument	Default	Description
 --checkpoint_path	None	Path to checkpoint for resuming/evaluation.
 📜 License
 This project is released under the MIT License.
+
 
 # MOEQ
 MoQE Training Code
