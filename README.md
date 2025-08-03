@@ -11,7 +11,7 @@
 ## 📌 About
 This repository provides an **efficient framework** for training **Mixture-of-Quantization-Experts (MoQE)** models that are built from **pre-trained, frozen, quantization experts**.  
 The key idea is simple: keep all expert parameters frozen and only train a **lightweight gating network** that dynamically routes and combines the knowledge of these quantized experts .
-
+This project includes the code for data preprocessing and the corresponding training model. If you want to know more detailed information about the quantization model, please refer to the file "quantization_model.md".
 | Advantages |
 | --- |
 | ✅ **Dramatically reduces training compute** |
@@ -102,8 +102,7 @@ MoQE Training Code
 
 本项目提供了一个用于混合量化专家（MoQE）模型的高效框架。其核心思想是利用多个预训练、冻结的经过量化的“专家”大语言模型，并仅训练一个轻量级的门控网络来学习如何根据输入动态地路由和组合这些量化专家的知识。
 
-这种方法显著降低了训练所需的计算资源，加快推理速度并且有着比单一的量化模型更加强的性能。论文中的NLP实验在A100 80GB的显卡上完成，CV实验在V100S上完成。
-
+这种方法显著降低了训练所需的计算资源，加快推理速度并且有着比单一的量化模型更加强的性能。本项目包含数据预处理以及相应的训练模型的代码如果想知道量化模型信息详细见quantization_model.md。论文中的NLP实验在A100 80GB的显卡上完成，CV实验在V100S上完成。
 ## 核心特性
 
 - **浅层共享架构 (Shallow-Sharing)**: 所有专家模型共享一个统一的词嵌入层，而专家自身的主体参数保持冻结，极大地减少了可训练参数量。
