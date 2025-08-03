@@ -36,6 +36,7 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 ---
 
 ## 📦 Quick Setup
+cuda 12.2
 pip install torch==2.7.1 transformers==4.53.3 \
             bitsandbytes==0.47.0.dev0 pandas==2.3.1 \
             tqdm==4.67.1 accelerate==1.9.0
@@ -98,6 +99,7 @@ MoQE Training Code
 在运行前，请确保已安装以下核心依赖库：
 
 ```bash
+cuda 12.2
 pip install torch==2.7.1 transformers==4.53.3 bitsandbytes==0.47.0.dev0 pandas==2.3.1 tqdm==4.67.1 accelerate==1.9.0
 ```
 更多详细信息见requirement.txt
