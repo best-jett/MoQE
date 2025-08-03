@@ -156,3 +156,6 @@ keyring @ file:///home/builder/ci_310/keyring_1640884834928/work
 kiwisolver @ file:///croot/kiwisolver_1672387140495/work
 lazy-object-proxy @ file:///home/builder/ci_310/lazy-object-proxy_1640791307593/work
 libarchiv
+
+
+pip install -r requirements.txt
