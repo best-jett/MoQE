@@ -2,7 +2,7 @@
 **MoQE: Improve Quantization Model Performance via Mixture of Quantization Experts**
 
 <p align="center">
-  <img alt="Python 3.10.9+" src="https://img.shields.io/badge/python-3.8+-blue.svg"/>
+  <img alt="Python 3.10.9+" src="https://img.shields.io/badge/python-3.10.9+-blue.svg"/>
   <img alt="PyTorch 2.7+" src="https://img.shields.io/badge/PyTorch-2.7+-orange.svg"/>
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green.svg"/>
 </p>
