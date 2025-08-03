@@ -39,6 +39,16 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 
 ```bash
 pip install -r requirements.txt
+<details>
+<summary>Core dependencies (requirements.txt preview)</summary>
+
+torch==2.7.1
+transformers==4.53.3
+bitsandbytes==0.47.0.dev0
+pandas==2.3.1
+tqdm==4.67.1
+accelerate==1.9.0
+</details>
 
 # MOEQ
 MoQE Training Code
