@@ -86,7 +86,7 @@ Argument	Default	Description
 MoQE Training Code
 # MoQE: Improve Quantization Model performance via Mixture of Quantization Experts.
 
-本项目提供了一个用于混合专家（MoE）模型的高效框架。其核心思想是利用多个预训练、冻结的经过量化的“专家”大语言模型，并仅训练一个轻量级的门控网络来学习如何根据输入动态地路由和组合这些量化专家的知识。
+本项目提供了一个用于混合量化专家（MoQE）模型的高效框架。其核心思想是利用多个预训练、冻结的经过量化的“专家”大语言模型，并仅训练一个轻量级的门控网络来学习如何根据输入动态地路由和组合这些量化专家的知识。
 
 这种方法显著降低了训练所需的计算资源，加快推理速度并且有着比单一的量化模型更加强的性能。论文中的NLP实验在A100 80GB的显卡上完成，CV实验在V100S上完成。
 
