@@ -43,14 +43,14 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 | **Driver** | 535.54.03 |
 
 ## 📦 Quick Setup
-```bash
-git clone https://github.com/<your-org>/MOEQ.git
+git clone https://best-jett/MOEQ.git
 cd MOEQ
 pip install -r requirements.txt
 
 pip install torch==2.7.1 transformers==4.53.3 \
             bitsandbytes==0.47.0.dev0 pandas==2.3.1 \
             tqdm==4.67.1 accelerate==1.9.0
+
 See requirements.txt for the full list.
 
 🛠️ Usage
