@@ -4,7 +4,6 @@
 <p align="center">
   <img alt="Python 3.10.9+" src="https://img.shields.io/badge/python-3.10.9+-blue.svg"/>
   <img alt="PyTorch 2.7+" src="https://img.shields.io/badge/PyTorch-2.7+-orange.svg"/>
-  <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green.svg"/>
 </p>
 
 ---
@@ -171,5 +170,4 @@ python train_model.py \
 | `--from_scratch` | `False` | 从头开始训练，即使存在检查点也忽略。 |
 | `--checkpoint_path` | `
 
-📜 License
-This project is released under the MIT License.
+
