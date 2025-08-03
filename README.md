@@ -37,7 +37,6 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 
 # 🚀 Quick Setup
 
-```bash
 pip install -r requirements.txt
 <details>
 <summary>Core dependencies (requirements.txt preview)</summary>
