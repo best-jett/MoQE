@@ -1,3 +1,25 @@
+System environment information
+Python: 3.10.9
+CUDA: 12.2
+GPU: NVIDIA A100-SXM4-80GB
+Driver: 535.54.03
+
+Dependent library version
+torch==2.7.1
+transformers==4.53.3
+bitsandbytes==0.47.0.dev0
+pandas==2.3.1
+tqdm==4.67.1
+accelerate==1.9.0
+numpy==1.26.4
+gguf==0.17.1
+psutil==7.0.0
+auto_gptq==0.7.1
+autoawq==0.2.9
+optimum==1.26.1
+peft==0.16.0
+unsloth==2025.7.3
+torchvision==0.22.1
 accelerate==1.9.0
 aiohappyeyeballs==2.6.1
 aiohttp==3.12.14
