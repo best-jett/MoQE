@@ -38,7 +38,7 @@ import torch.distributed as dist
 from torch.cuda.amp import GradScaler, autocast
 import sys
 
-DATASET_PATH_FOR_PERPLEXITY = "/mnt/data/zhangjinhao/data/wikipedia/20231101.en"
+DATASET_PATH_FOR_PERPLEXITY = "path/to/data"
 
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
@@ -215,7 +215,7 @@ def allocate_models_to_gpus(model_configs, gpu_threshold_gb=4.0):
     return [model['config'] for model in model_sizes]
 
 # 统一的分词器路径 - 更新为非量化模型路径
-UNIFIED_TOKENIZER_PATH = "/mnt/data/zhangjinhao/Llama-3.2-3B-Instruct/"
+UNIFIED_TOKENIZER_PATH = "path/to/tokenizer"
 UNIFIED_TOKENIZER_FILE = os.path.join(UNIFIED_TOKENIZER_PATH, "tokenizer.json")
 
 # 检查统一分词器文件是否存在
@@ -1789,7 +1789,6 @@ def train(args):
             {'path': 'path/to/expert1'},
             {'path': 'path/to/expert2'},
             {'path': 'path/to/expert3', 'disable_marlin': True},
-            # --- FIX: Load the 4th expert as a GPTQ model, not a BNB 4-bit model ---
             {'path': 'path/to/expert4', 'disable_marlin': True}
         ]
     
