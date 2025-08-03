@@ -1,17 +1,74 @@
+MOEQ
+MoQE Training Code
+MoQE: Improve Quantization Model Performance via Mixture of Quantization Experts.
+This repository provides an efficient framework for training Mixture-of-Experts (MoE) models composed of pre-trained, frozen, quantized experts.
+The key idea is to keep all expert parameters frozen and only train a lightweight gating network that learns to dynamically route and combine the knowledge of these quantized experts on-the-fly.
+This approach dramatically reduces training compute, accelerates inference, and outperforms single quantized models on downstream tasks.
+NLP experiments were conducted on A100 80 GB, and CV experiments on V100S.
+Core Features
+Shallow-Sharing: All experts share one unified embedding layer; the bodies of the experts remain frozen, cutting trainable parameters to a minimum.
+Heterogeneous Experts: Native support for GGUF, Safetensors, and other formats—freely combine open-source experts.
+Dynamic Gating (MoERouter): A TransformerEncoder + self-attention router captures deep context to make precise routing decisions.
+Memory-Efficient Training:
+Gradient Checkpointing
+8-bit AdamW (bitsandbytes)
+Smart GPU Allocation: Automatically profiles each expert’s VRAM footprint; large experts are placed in model-parallel mode, small experts on the least-busy device.
+Curriculum Learning: Start training on a smaller dataset, then switch to a larger corpus for more stable and efficient convergence.
+Requirements
+Install the core dependencies:
+
+pip install torch==2.7.1 transformers==4.53.3 bitsandbytes==0.47.0.dev0 pandas==2.3.1 tqdm==4.67.1 accelerate==1.9.0
+See requirements.txt for the full list.
+Quick Start
+1. Prepare Data & Models
+Place .parquet datasets in the specified directory.
+Prepare your quantized experts and note their paths.
+We use WikiText-2, OpenWebText, and C4 in our experiments.
+2. Launch Training
+Basic training:
+python train_model.py \
+    --train \
+    --expert_paths /path/to/expert1 /path/to/expert2 \
+    --data_dir /path/to/your/data \
+    --save_dir /path/to/save/checkpoints \
+    --batch_size 8 \
+    --gradient_accumulation_steps 6 \
+    --learning_rate 5e-5 \
+    --epochs 10
+Resume from checkpoint:
+
+python train_model.py \
+    --train \
+    --checkpoint_path /path/to/save/checkpoints/checkpoint.pt \
+    --expert_paths /path/to/expert1 /path/to/expert2 \
+    --data_dir /path/to/your/data \
+    --save_dir /path/to/save/checkpoints
+Full Argument Reference
+
+Argument	Default	Description
+Core		
+--train	False	Enable training mode.
+--eval	False	Enable evaluation mode.
+--expert_paths	None	Space-separated list of expert model paths.
+--data_dir	/path/to/data	Directory containing .parquet datasets.
+--save_dir	/path/to/moe_output	Directory to save checkpoints and outputs.
+--from_scratch	False	Train from scratch, ignoring existing checkpoints.
+--checkpoint_path	None	Path to a checkpoint for resuming or evaluation.
+
 # MOEQ
 MoQE Training Code
 # MoQE: Improve Quantization Model performance via Mixture of Quantization Experts.
 
 本项目提供了一个用于混合专家（MoE）模型的高效框架。其核心思想是利用多个预训练、冻结的经过量化的“专家”大语言模型，并仅训练一个轻量级的门控网络来学习如何根据输入动态地路由和组合这些量化专家的知识。
 
-这种方法显著降低了训练所需的计算资源，加快推理速度并且有着比单一的量化模型更加强的性能。
+这种方法显著降低了训练所需的计算资源，加快推理速度并且有着比单一的量化模型更加强的性能。论文中的NLP实验在A100 80GB的显卡上完成，CV实验在V100S上完成。
 
 ## 核心特性
 
 - **浅层共享架构 (Shallow-Sharing)**: 所有专家模型共享一个统一的词嵌入层，而专家自身的主体参数保持冻结，极大地减少了可训练参数量。
 - **异构专家支持 (Heterogeneous Experts)**: 框架原生支持加载不同格式的专家模型，包括 GGUF 和 Safetensors，允许灵活组合来自开源社区的各类模型。
 - **动态门控网络 (Dynamic Gating Network)**: 采用一个包含`TransformerEncoder`和自注意力机制的复杂`MoERouter`，能够捕捉输入序列的深层上下文信息以做出更精准的路由决策。。
-- **显存高效训练 (Memory-Efficient Training)**: 默认启用**梯度检查点 (Gradient Checkpointing)**、**8-bit AdamW 优化器**以在标准单卡（如 A100 80G）上实现多专家模型的稳定训练。
+- **显存高效训练 (Memory-Efficient Training)**: 默认启用**梯度检查点 (Gradient Checkpointing)**、**8-bit AdamW 优化器**以在标准单卡上实现多专家模型的稳定训练。
 - **智能GPU分配 (Smart GPU Allocation)**: 训练前自动评估专家模型的显存占用，并将大型模型配置为跨多GPU的模型并行模式，小型模型则分配至当前最空闲的设备。
 - **课程学习策略 (Curriculum Learning)**: 支持在训练初期使用较小的数据集，在后期切换到更大的数据集，以实现更稳定和高效的收敛。
 
