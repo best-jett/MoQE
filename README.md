@@ -36,7 +36,11 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 ---
 
 ## 📦 Quick Setup
-cuda 12.2
+System environment information
+Python: 3.10.9
+CUDA: 12.2
+GPU: NVIDIA A100-SXM4-80GB
+Driver: 535.54.03
 
 pip install torch==2.7.1 transformers==4.53.3 \
             bitsandbytes==0.47.0.dev0 pandas==2.3.1 \
