@@ -1,4 +1,4 @@
-# MOEQ  
+# MOQE
 **MoQE: Improve Quantization Model Performance via Mixture of Quantization Experts**
 
 <p align="center">
@@ -96,7 +96,7 @@ python train_model.py \
 | `--checkpoint_path` | `None`          | Resume from checkpoint          |
 
 
-# MOEQ
+# MOQE
 MoQE Training Code
 # MoQE: Improve Quantization Model performance via Mixture of Quantization Experts.
 
