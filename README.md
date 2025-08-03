@@ -22,7 +22,7 @@ MoQE Training Code
 ```bash
 pip install torch==2.7.1 transformers==4.53.3 bitsandbytes==0.47.0.dev0 pandas==2.3.1 tqdm==4.67.1 accelerate==1.9.0
 ```
-更多信息详细见requirements.txt
+更多信息详细见requirement.txt
 
 ## 使用方法
 
