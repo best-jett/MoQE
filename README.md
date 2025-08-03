@@ -66,8 +66,8 @@ python train_model.py \
 | `--train` | `False` | 启动训练模式。 |
 | `--eval` | `False` | 启动评估模式。 |
 | `--expert_paths` | `None` | 一系列专家模型的路径，以空格分隔。 |
-| `--data_dir` | `/mnt/data/zhangjinhao/data` | 包含`.parquet`数据集文件的目录。 |
-| `--save_dir` | `/mnt/data/zhangjinhao/moe_output` | 保存模型检查点和输出的目录。 |
+| `--data_dir` | `/path/to/data` | 包含`.parquet`数据集文件的目录。 |
+| `--save_dir` | `/path/to/moe_output` | 保存模型检查点和输出的目录。 |
 | `--from_scratch` | `False` | 从头开始训练，即使存在检查点也忽略。 |
 | `--checkpoint_path` | `
 
