@@ -17,7 +17,12 @@ In this project, large language models that employ AWQ, Smoothquant, GPTQ, k-qua
 | **Qwen3-1.7B-GGUF** | <https://github.com/QwenLM/Qwen3-1.7B-GGUF> | 
 | **Qwen3-4B-GGUF**   | <https://github.com/QwenLM/Qwen3-4B-GGUF>   | 
 
-Some model parameters are not open-sourced and cannot be downloaded from the internet. Therefore, one needs to quantize the corresponding models to replicate the experiments in this paper. Due to the excessive amount of data required from quantization experts and the large size of the quantization expert's parameter data, the non-open-sourced model parameters will not be provided in this project./r
+Some model parameters are not open-sourced and cannot be downloaded from the internet. Therefore, one needs to quantize the corresponding models to replicate the experiments in this paper. Due to the excessive amount of data required from quantization experts and the large size of the quantization expert's parameter data, the non-open-sourced model parameters will not be provided in this project.
+
+
+
+
+
 
 本项目中的选择了使用AWQ,Smoothquant,GPTQ，k-quants，imatrix量化方法的大语言模型作为专家，选择Qwen0.6B,Qwen1.7B,llama3B以及Qwen4B作为实验对象。
 论文中的数据集也是基于开源的数据集（详细见dataset.md）
