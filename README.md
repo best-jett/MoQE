@@ -42,7 +42,6 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 | **GPU** | NVIDIA A100-SXM4-80GB |
 | **Driver** | 535.54.03 |
 
----
 ## 📦 Quick Setup
 ```bash
 git clone https://github.com/<your-org>/MOEQ.git
