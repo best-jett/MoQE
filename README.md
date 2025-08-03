@@ -34,13 +34,20 @@ The key idea is simple: keep all expert parameters frozen and only train a **lig
 | **Curriculum Learning** | Start on a **smaller** dataset, then switch to a **larger** corpus for stable & efficient convergence. |
 
 ---
+## 🖥️ System Environment
+| Component | Version |
+| --- | --- |
+| **Python** | 3.10.9 |
+| **CUDA** | 12.2 |
+| **GPU** | NVIDIA A100-SXM4-80GB |
+| **Driver** | 535.54.03 |
 
+---
 ## 📦 Quick Setup
-System environment information
-Python: 3.10.9
-CUDA: 12.2
-GPU: NVIDIA A100-SXM4-80GB
-Driver: 535.54.03
+```bash
+git clone https://github.com/<your-org>/MOEQ.git
+cd MOEQ
+pip install -r requirements.txt
 
 pip install torch==2.7.1 transformers==4.53.3 \
             bitsandbytes==0.47.0.dev0 pandas==2.3.1 \
@@ -75,17 +82,17 @@ python train_model.py \
     --data_dir /path/to/data \
     --save_dir /path/to/save/checkpoints
 
-
-
 ⚙️ Argument Reference
-Argument	Default	Description
---train	False	Enable training mode.
---eval	False	Enable evaluation mode.
---expert_paths	None	Space-separated list of expert model paths.
---data_dir	/path/to/data	Directory containing .parquet datasets.
---save_dir	/path/to/moe_output	Directory to save checkpoints & outputs.
---from_scratch	False	Train from scratch, ignoring existing checkpoints.
---checkpoint_path	None	Path to checkpoint for resuming/evaluation.
+| Argument            | Default         | Description                     |
+| ------------------- | --------------- | ------------------------------- |
+| `--train`           | `False`         | Enable training mode            |
+| `--eval`            | `False`         | Enable evaluation mode          |
+| `--expert_paths`    | `None`          | Space-separated expert paths    |
+| `--data_dir`        | `./data`        | Directory with `.parquet` files |
+| `--save_dir`        | `./checkpoints` | Output directory                |
+| `--from_scratch`    | `False`         | Ignore existing checkpoints     |
+| `--checkpoint_path` | `None`          | Resume from checkpoint          |
+
 
 # MOEQ
 MoQE Training Code
