@@ -1,15 +1,15 @@
 - Datasets, Versions & Official Download Links
 - C4
-- • allenai/c4-documentation – official docs, search index & raw download instructions
-- https://github.com/allenai/c4-documentation
-- • TensorFlow Datasets – c4 (configs: en, en.noclean, webtextlike, multilingual, etc.)
-- https://www.tensorflow.org/datasets/catalog/c4
-- • shjwudp/c4-dataset-script – Spark-based cleaning pipeline for C4 & Chinese corpus
-- https://github.com/shjwudp/c4-dataset-script
+  allenai/c4-documentation – official docs, search index & raw download instructions
+https://github.com/allenai/c4-documentation
+- TensorFlow Datasets – c4 (configs: en, en.noclean, webtextlike, multilingual, etc.)
+  https://www.tensorflow.org/datasets/catalog/c4
+- shjwudp/c4-dataset-script – Spark-based cleaning pipeline for C4 & Chinese corpus
+  https://github.com/shjwudp/c4-dataset-script
 - OpenWebText
-- • Skylion007/openwebtext – ready-to-load Hugging Face mirror (plain_text split)
-- https://huggingface.co/datasets/Skylion007/openwebtext
-- • jcpeterson/openwebtext – original scraper & extraction scripts
+- Skylion007/openwebtext – ready-to-load Hugging Face mirror (plain_text split)
+  https://huggingface.co/datasets/Skylion007/openwebtext
+- jcpeterson/openwebtext – original scraper & extraction scripts
 - https://github.com/jcpeterson/openwebtext
 - WikiText-2
 - • wikitext-2.zip – direct download (compatible with torchtext & HF datasets)
